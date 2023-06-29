@@ -77,7 +77,8 @@ Apache Maven
 
 <code>redis-server.exe redis.windows.conf </code>
 
-![image-20230628194425604](C:/Users/WuBing/AppData/Roaming/Typora/typora-user-images/image-20230628194425604.png)
+![image-20230628194425604](https://github.com/FeiSkyDeC/SCD/assets/74658213/d8db752a-9ede-40c9-a838-a4f02a1bce31)
+
 
 打开Redis客户端：
 
@@ -85,27 +86,26 @@ Apache Maven
 
 并使用ping命令检测客户端与服务器的连通性：
 
-![image-20230628194648879](C:/Users/WuBing/AppData/Roaming/Typora/typora-user-images/image-20230628194648879.png)
-
+![image-20230629150308060](https://github.com/FeiSkyDeC/SCD/assets/74658213/a3c1faaa-4f72-4c43-b125-b5aa6338f77c)
 
 
 - 后端启动 (使用IntelliJ IDEA Ultimate运行 <strong>RuoYi-Vue </strong>项目)
 
-![image-20230628200632873](C:/Users/WuBing/AppData/Roaming/Typora/typora-user-images/image-20230628200632873.png)
+![image-20230628200632873](https://github.com/FeiSkyDeC/SCD/assets/74658213/49e17dbc-a761-4756-8142-4446155cb2a9)
 
 - 前端运行(使用WebStorm的控制台 运行 <strong>ruoyi-ui</strong>项目)
+![image-20230628200653012](https://github.com/FeiSkyDeC/SCD/assets/74658213/3e4f57bc-e403-48b9-86f2-472683caaead)
 
-![image-20230629150308060](C:/Users/WuBing/AppData/Roaming/Typora/typora-user-images/image-20230629150308060.png)
 
 <p>
     前端运行后，浏览器将打开管理系统页面如下：
 </p>
 
-![image-20230628200709374](C:/Users/WuBing/AppData/Roaming/Typora/typora-user-images/image-20230628200709374.png)
+![image-20230628200709374](https://github.com/FeiSkyDeC/SCD/assets/74658213/5795e6ce-984a-4cea-b8bf-087f88668f27)
 
 登录
+![image-20230628200753066](https://github.com/FeiSkyDeC/SCD/assets/74658213/dfb142e5-0498-424a-b568-9f53c6cda0b1)
 
-![image-20230628200753066](C:/Users/WuBing/AppData/Roaming/Typora/typora-user-images/image-20230628200753066.png)
 
 此时，将 <strong>RuoYi项目</strong> 部署到本地机中。
 
