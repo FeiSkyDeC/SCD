@@ -88,16 +88,14 @@ Apache Maven
 <code>redis-cli.exe -h 127.0.0.1 -p 6379</code>
 
 并使用ping命令检测客户端与服务器的连通性：
-
-![image-20230629150308060](https://github.com/FeiSkyDeC/SCD/assets/74658213/a3c1faaa-4f72-4c43-b125-b5aa6338f77c)
-
+![image](https://github.com/FeiSkyDeC/SCD/assets/74658213/c5538152-6a1b-4590-a6cd-f23113f320f7)
 
 - 后端启动 (使用IntelliJ IDEA Ultimate运行 <strong>RuoYi-Vue </strong>项目)
 
 ![image-20230628200632873](https://github.com/FeiSkyDeC/SCD/assets/74658213/49e17dbc-a761-4756-8142-4446155cb2a9)
 
 - 前端运行(使用WebStorm的控制台 运行 <strong>ruoyi-ui</strong>项目)
-![image-20230628200653012](https://github.com/FeiSkyDeC/SCD/assets/74658213/3e4f57bc-e403-48b9-86f2-472683caaead)
+![image-20230629150308060](https://github.com/FeiSkyDeC/SCD/assets/74658213/a3c1faaa-4f72-4c43-b125-b5aa6338f77c)
 
 
 <p>
