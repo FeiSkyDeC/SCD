@@ -25,3 +25,6 @@ replay_pid*
 
 # ruoyi database configurations
 application-druid.yml
+
+# idea workspace
+/.idea/
