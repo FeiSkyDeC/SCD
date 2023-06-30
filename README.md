@@ -14,16 +14,13 @@ Summer Course Design, 若依项目二次开发
 &nbsp&nbsp&nbsp&nbsp|--DataBase
     数据库
     <br/>
-&nbsp&nbsp&nbsp&nbsp|--RuoYi-exam
-    RuoYi项目
-    <br/>
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--ruoyi-ui
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--RuoYi-UI
     前端项目
     <br/>
 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--RuoYi-Vue
     后端项目
     <br/>
-&nbsp&nbsp&nbsp&nbsp|--readme.md
+&nbsp&nbsp&nbsp&nbsp|--README.md
     说明文档
     <br/>
 </div>
@@ -38,9 +35,9 @@ Summer Course Design, 若依项目二次开发
 </a>
 <br>
 前端部署： <br>
-WebStorm： ./RuoYi-exam/ruoyi-ui<br>
+WebStorm： ./RuoYi-UI<br>
 后端部署：<br>
-IntelliJ IDEA Ultimate： ./RuoYi-exam/RuoYi-Vue<br>
+IntelliJ IDEA Ultimate： ./RuoYi-Vue<br>
 数据库部署：<br>
 DataGrip: ./DataBase<br>
 </form>
@@ -52,7 +49,7 @@ JDK1.8
 Java开发工具包 
 <br/>
 <a href="https://nodejs.org/zh-cn/download">
-Node.js 
+Node.js 14
 </a>
 JavaScript运行时环境
 <br/>
