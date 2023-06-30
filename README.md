@@ -14,10 +14,10 @@ Summer Course Design, 若依项目二次开发
 &nbsp&nbsp&nbsp&nbsp|--DataBase
     数据库
     <br/>
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--RuoYi-UI
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--RuoYi-UI
     前端项目
     <br/>
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--RuoYi-Vue
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|--RuoYi-Vue
     后端项目
     <br/>
 &nbsp&nbsp&nbsp&nbsp|--README.md
