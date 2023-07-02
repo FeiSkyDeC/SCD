@@ -4,7 +4,7 @@ drop table if exists tm_work;
 drop table if exists tm_workfeedback;
 
 create database if not exists task_manage;
-
+/* 项目内容更改后，推送到GitHub上 */
 use task_manage;
 
 create table tm_tech(
