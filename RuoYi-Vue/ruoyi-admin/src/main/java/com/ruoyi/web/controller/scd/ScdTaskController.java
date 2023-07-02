@@ -6,6 +6,7 @@ import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.core.domain.entity.ScdTask;
 import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.system.service.IScdTaskService;
+import org.aspectj.weaver.loadtime.Aj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
@@ -21,6 +22,12 @@ public class ScdTaskController extends BaseController {
         @GetMapping("/list")
         public AjaxResult list(ScdTask task) {
                 return success(taskService.selectTasksList(task));
+        }
+
+        @PreAuthorize("@ss.hasPermi('scd:tasks:list')")
+        @GetMapping("/{taskId}")
+        public AjaxResult getTask(@PathVariable Long taskId) {
+                return success(taskService.selectTaskById(taskId));
         }
 
         @PreAuthorize("@ss.hasPermi('scd:tasks:add')")
