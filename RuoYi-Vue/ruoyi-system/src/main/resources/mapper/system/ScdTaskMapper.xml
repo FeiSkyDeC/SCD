@@ -3,11 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.system.mapper.ScdTaskMapper">
+    <resultMap type="ScdTask" id="ScdTaskResult">
+        <id property="taskId" column="task_id"/>
+    </resultMap>
+
     <select id="selectTasksList" parameterType="ScdTask" resultMap="ScdTaskResult">
 
     </select>
 
-    <select id="selectTaskById" parameterType="Long" resultMap="SysTaskResult">
+    <select id="selectTaskById" parameterType="Long" resultMap="ScdTaskResult">
 
     </select>
 

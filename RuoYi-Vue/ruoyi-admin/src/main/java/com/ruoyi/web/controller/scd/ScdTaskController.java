@@ -6,7 +6,6 @@ import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.core.domain.entity.ScdTask;
 import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.system.service.IScdTaskService;
-import org.aspectj.weaver.loadtime.Aj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
@@ -30,14 +29,15 @@ public class ScdTaskController extends BaseController {
                 return success(taskService.selectTaskById(taskId));
         }
 
-        @PreAuthorize("@ss.hasPermi('scd:tasks:add')")
-        @Log(title = "任务管理", businessType = BusinessType.INSERT)
-        @PostMapping("/add")
-        public AjaxResult add(@Validated @RequestBody ScdTask task) {
-                // ..implemented by other teammates?
-
-                return toAjax(taskService.insertTask(task));
-        }
+        // ..implemented by other teammates?
+//        @PreAuthorize("@ss.hasPermi('scd:tasks:add')")
+//        @Log(title = "任务管理", businessType = BusinessType.INSERT)
+//        @PostMapping("/add")
+//        public AjaxResult add(@Validated @RequestBody ScdTask task) {
+//                //
+//
+//                return toAjax(taskService.insertTask(task));
+//        }
 
         @PreAuthorize("@ss.hasPermi('scd:tasks:edit')")
         @Log(title = "任务管理", businessType = BusinessType.UPDATE)

@@ -32,16 +32,22 @@ public class ScdTaskServiceImpl implements IScdTaskService {
 
         @Override
         public int updateTask(ScdTask task) {
-                return 0;
+                // TODO
+
+                return taskMapper.updateTask(task);
         }
 
         @Override
         public int deleteTaskById(Long taskId) {
-                return 0;
+                // TODO
+
+                return taskMapper.deleteTaskById(taskId);
         }
 
         @Override
         public int abortTaskById(Long taskId) {
-                return 0;
+                // TODO
+
+                return taskMapper.abortTaskById(taskId);
         }
 }
