@@ -1,6 +1,8 @@
 ## SCD
 Summer Course Design, 若依项目二次开发
 
+### 以后项目提交都推送到develop分支
+
 ## 项目说明
 
 ### 项目框架
