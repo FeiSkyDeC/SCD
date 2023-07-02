@@ -30,4 +30,4 @@ application-druid.yml
 /.idea/
 
 # 不再更改以后提交的项目计划书
-Documents/协作开发文档/项目文档/项目计划书.docx
+#Documents/协作开发文档/项目文档/项目计划书.docx
