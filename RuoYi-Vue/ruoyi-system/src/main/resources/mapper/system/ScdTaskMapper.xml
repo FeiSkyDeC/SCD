@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.ScdTaskMapper">
+    <select id="selectTasksList" parameterType="ScdTask" resultMap="ScdTaskResult">
+
+    </select>
+
+    <select id="selectTaskById" parameterType="Long" resultMap="SysTaskResult">
+
+    </select>
+
+    <insert id="insertTask" parameterType="ScdTask">
+        <!-- implemented by other teammates -->
+    </insert>
+
+    <update id="updateTask" parameterType="ScdTask">
+
+    </update>
+
+    <delete id="deleteTaskById" parameterType="Long">
+
+    </delete>
+
+    <update id="abortTaskById" parameterType="Long">
+
+    </update>
+</mapper>
