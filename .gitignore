@@ -1,0 +1,33 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+replay_pid*
+
+# ruoyi database configurations
+application-druid.yml
+
+# idea workspace
+/.idea/
+
+# 不再更改以后提交的项目计划书
+Documents/协作开发文档/项目文档/项目计划书.docx
