@@ -121,6 +121,8 @@ alter table stu_wk add constraint cstu_stu
 # 学生-任务表 与 任务表
 alter table stu_wk add constraint cstu_wk
     foreign key (wk_id) REFERENCES tm_wk(wk_id);
+alter table tm_tea add constraint ctea_tea
+    foreign key (tea_id) REFERENCES tm_tea_ma_stu(tea_id);
 /* ************ 定义外键约束 ************ */
 
 /* ************ 插入数据 ************ */
