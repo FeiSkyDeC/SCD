@@ -1,3 +1,4 @@
+
 drop table if exists tm_tea;
 drop table if exists tm_stu;
 drop table if exists tm_mess;
@@ -5,7 +6,6 @@ drop table if exists tm_wk;
 drop table if exists tm_tea_ma_stu;
 drop table if exists stu_wk;
 drop procedure if exists dropforeignkey;
-
 # drop 所有外键 if exists;
 DELIMITER //
 create procedure dropforeignkey()
@@ -44,7 +44,9 @@ BEGIN
     END IF;
 END //
 DELIMITER ;
-call dropforeignkey();
+
+#如果想删除外键，就执行下面的语句
+#call dropforeignkey();
 
 # 创建数据库 ry_db
 create database if not exists ry_db;
