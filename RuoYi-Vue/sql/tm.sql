@@ -141,43 +141,53 @@ insert into tm_wk(wk_id, wk_name, wk_start, wk_end, wk_stau, wk_des)
 insert into tm_tea_ma_stu (tea_id, stu_id)
     values ('30001', '60001');*/
 
-# 以下向数据库 stu_wk 中插入4条语句
+# 以下向数据库 stu_wk 中插入语句
 insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
-    values ('1', '30001', '学生A','60001', '教师A','完成前端设计', '2023-07-04 20:13:19',
-           '2023-07-09 20:13:19', '分配', '通过', '正常完成前端任务');
+values ('1', '30001', '学生A','60001', '教师A','完成前端设计', '2023-07-04 20:13:19','2023-07-09 20:13:19', '分配', '通过', '正常完成前端任务');
 insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
-values ('2', '30001', '学生A','60001', '教师A', '完成后端设计', '2023-07-04 20:13:19',
-        '2023-07-09 20:13:19', '未分配', '未通过', '正常完成后端任务');
+values ('2', '30001', '学生A','60001', '教师A', '完成后端设计', '2023-07-04 20:13:19','2023-07-09 20:13:19', '未分配', '未通过', '正常完成后端任务');
 insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
-values ('3', '30001', '学生A','60001', '教师A', '完成大文档编写', '2023-07-04 20:13:19',
-        '2023-07-09 20:13:19', '分配', '未通过', '正常完成文档任务');
+values ('3', '30001', '学生A','60001', '教师A', '完成大文档编写', '2023-07-04 20:13:19','2023-07-09 20:13:19', '分配', '未通过', '正常完成文档任务');
 insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
-values ('4', '30002', '学生B','60001', '教师A', '完成小文档设计', '2023-07-04 20:13:19',
-        '2023-07-09 20:13:19', '分配', '通过', '正常完成任务');
+values ('4', '30002', '学生B','60001', '教师A', '完成小文档设计', '2023-07-04 20:13:19','2023-07-09 20:13:19', '分配', '通过', '正常完成任务');
 insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
-values ('5', '30002', '学生B','60001', '教师A','完成项目计划设计', '2023-07-04 20:13:19',
-        '2023-07-09 20:13:19', '分配', '通过', '正常完成项目计划任务');
+values ('5', '30002', '学生B','60001', '教师A','完成项目计划设计', '2023-07-04 20:13:19','2023-07-09 20:13:19', '分配', '通过', '正常完成项目计划任务');
 insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
-values ('6', '30003', '学生C','60001', '教师A', '完成后端详细分析', '2023-07-04 20:13:19',
-        '2023-07-09 20:13:19', '未分配', '未通过', '正常完成后端详细分析');
+values ('6', '30003', '学生C','60001', '教师A', '完成后端详细分析', '2023-07-04 20:13:19','2023-07-09 20:13:19', '未分配', '未通过', '正常完成后端详细分析');
 insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
-values ('7', '30004', '学生D','60001', '教师A', '制定任务计划', '2023-07-04 20:13:19',
-        '2023-07-09 20:13:19', '分配', '未通过', '正常完成计划指定');
+values ('7', '30004', '学生D','60001', '教师A', '制定任务计划', '2023-07-04 20:13:19','2023-07-09 20:13:19', '分配', '未通过', '正常完成计划指定');
 insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
-values ('8', '30005', '学生E','60001', '教师A', '完成任务计划', '2023-07-04 20:13:19',
-        '2023-07-09 20:13:19', '分配', '通过', '正常完完成计划指定');
+values ('8', '30005', '学生E','60001', '教师A', '完成任务计划', '2023-07-04 20:13:19','2023-07-09 20:13:19', '分配', '通过', '正常完完成计划指定');
 insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
-values ('9', '30005', '学生E','60001', '教师A','完成前端设计', '2023-07-04 20:13:19',
-        '2023-07-09 20:13:19', '分配', '通过', '正常完成前端任务');
+values ('9', '30005', '学生E','60001', '教师A','完成前端设计', '2023-07-04 20:13:19','2023-07-09 20:13:19', '分配', '通过', '正常完成前端任务');
 insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
-values ('10', '30005', '学生E','60001', '教师A', '完成后端设计', '2023-07-04 20:13:19',
-        '2023-07-09 20:13:19', '未分配', '未通过', '正常完成后端任务');
+values ('10', '30005', '学生E','60001', '教师A', '完成后端设计', '2023-07-04 20:13:19','2023-07-09 20:13:19', '未分配', '未通过', '正常完成后端任务');
 insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
-values ('11', '30005', '学生E','60001', '教师A', '完成大文档编写', '2023-07-04 20:13:19',
-        '2023-07-09 20:13:19', '分配', '未通过', '正常完成文档任务');
+values ('11', '30005', '学生E','60001', '教师A', '完成大文档编写', '2023-07-04 20:13:19','2023-07-09 20:13:19', '分配', '未通过', '正常完成文档任务');
 insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
-values ('12', '30006', '学生F','60001', '教师A', '完成前端设计', '2023-07-04 20:13:19',
-        '2023-07-09 20:13:19', '分配', '通过', '正常完成前端设计');
+values ('12', '30006', '学生F','60001', '教师A', '完成前端设计', '2023-07-04 20:13:19','2023-07-09 20:13:19', '分配', '通过', '正常完成前端设计');
+insert into stu_wk (wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+VALUES ('13', '30007', '学生G', '60007', '教师G', '完成UI设计', '2023-07-16 14:15:00', '2023-07-21 14:15:00', '未分配', '未通过', '未完成UI设计任务');
+insert into stu_wk (wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+VALUES ('14', '30007', '学生G', '60007', '教师G', '完成系统集成', '2023-07-17 16:45:00', '2023-07-22 16:45:00', '分配', '未通过', '正常完成系统集成任务');
+insert into stu_wk (wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+VALUES ('15', '30007', '学生G', '60007', '教师G', '完成性能优化', '2023-07-18 11:20:00', '2023-07-23 11:20:00', '分配', '通过', '正常完成性能优化任务');
+insert into stu_wk (wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+VALUES ('16', '30007', '学生G', '60007', '教师G', '完成用户反馈收集', '2023-07-19 19:10:00', '2023-07-24 19:10:00', '未分配', '未通过', '未完成用户反馈收集任务');
+insert into stu_wk (wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+VALUES ('17', '30007', '学生G', '60007', '教师G', '完成安全测试', '2023-07-20 10:30:00', '2023-07-25 10:30:00', '分配', '通过', '正常完成安全测试任务');
+insert into stu_wk (wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+VALUES ('21', '30007', '学生G', '60007', '教师G', '完成系统评估', '2023-07-24 13:10:00', '2023-07-29 13:10:00', '分配', '通过', '正常完成系统评估任务');
+insert into stu_wk (wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+VALUES ('22', '30007', '学生G', '60007', '教师G', '完成用户验收', '2023-07-25 18:25:00', '2023-07-30 18:25:00', '未分配', '未通过', '未完成用户验收任务');
+insert into stu_wk (wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+VALUES ('23', '30007', '学生G', '60007', '教师G', '完成项目总结', '2023-07-26 12:40:00', '2023-07-31 12:40:00', '分配', '通过', '正常完成项目总结任务');
+insert into stu_wk (wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+VALUES ('24', '30007', '学生G', '60007', '教师G', '完成部署与上线', '2023-07-27 14:55:00', '2023-08-01 14:55:00', '分配', '通过', '正常完成部署与上线任务');
+insert into stu_wk (wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+VALUES ('25', '30007', '学生G', '60007', '教师G', '完成需求变更', '2023-07-28 10:10:00', '2023-08-02 10:10:00', '未分配', '未通过', '未完成需求变更任务');
+insert into stu_wk (wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+VALUES ('26', '30007', '学生G', '60007', '教师G', '完成数据备份', '2023-07-29 18:35:00', '2023-08-03 18:35:00', '分配', '通过', '正常完成数据备份任务');
 /* ************ 插入数据 ************ */
 
 /* ************ 任务状态 ************ */
@@ -185,7 +195,6 @@ values ('12', '30006', '学生F','60001', '教师A', '完成前端设计', '2023
                           create_time, update_by, update_time, remark)
     values ('4', '任务状态', 'sys_job_status', '0', 'admin', '2023-06-30 12:35:40',
             'admin', '2023-07-05 19:49:44', '任务状态列表');
-
 insert into sys_dict_data(dict_code, dict_sort, dict_label, dict_value, dict_type, css_class, list_class,
                           is_default, status, create_by, create_time, update_by, update_time, remark)
     values ()*/
