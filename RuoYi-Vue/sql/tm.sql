@@ -99,7 +99,9 @@ create table tm_tea_ma_stu(
 create table stu_wk(
     wk_id mediumint not null AUTO_INCREMENT comment "任务序号",
     stu_id mediumint not null comment "学生唯一标识符",
+    stu_name nvarchar(12) not null comment "学生姓名",
     tea_id mediumint not null comment "教师唯一标识符",
+    tea_name nvarchar(12) not null comment "教师姓名",
     wk_name nvarchar(12) not null comment "任务名称",
     wk_start datetime not null comment "任务发布日期",
     wk_end datetime not null comment "任务截至日期",
@@ -140,23 +142,42 @@ insert into tm_tea_ma_stu (tea_id, stu_id)
     values ('30001', '60001');*/
 
 # 以下向数据库 stu_wk 中插入4条语句
-insert into stu_wk(wk_id, stu_id, tea_id, wk_name, wk_start, wk_end,
-                   wk_stau, wk_ex_stau, wk_des)
-    values ('1', '30001', '60001', '完成前端设计', '2023-07-04 20:13:19',
+insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+    values ('1', '30001', '学生A','60001', '教师A','完成前端设计', '2023-07-04 20:13:19',
            '2023-07-09 20:13:19', '分配', '通过', '正常完成前端任务');
-insert into stu_wk(wk_id, stu_id, tea_id, wk_name, wk_start, wk_end,
-                   wk_stau, wk_ex_stau, wk_des)
-values ('2', '30001', '60001', '完成后端设计', '2023-07-04 20:13:19',
+insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+values ('2', '30001', '学生A','60001', '教师A', '完成后端设计', '2023-07-04 20:13:19',
         '2023-07-09 20:13:19', '未分配', '未通过', '正常完成后端任务');
-insert into stu_wk(wk_id, stu_id, tea_id, wk_name, wk_start, wk_end,
-                   wk_stau, wk_ex_stau, wk_des)
-values ('3', '30001', '60001', '完成大文档编写', '2023-07-04 20:13:19',
+insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+values ('3', '30001', '学生A','60001', '教师A', '完成大文档编写', '2023-07-04 20:13:19',
         '2023-07-09 20:13:19', '分配', '未通过', '正常完成文档任务');
-insert into stu_wk(wk_id, stu_id, tea_id, wk_name, wk_start, wk_end,
-                   wk_stau, wk_ex_stau, wk_des)
-values ('4', '30001', '60001', '完成小文档设计', '2023-07-04 20:13:19',
+insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+values ('4', '30002', '学生B','60001', '教师A', '完成小文档设计', '2023-07-04 20:13:19',
         '2023-07-09 20:13:19', '分配', '通过', '正常完成任务');
-
+insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+values ('5', '30002', '学生B','60001', '教师A','完成项目计划设计', '2023-07-04 20:13:19',
+        '2023-07-09 20:13:19', '分配', '通过', '正常完成项目计划任务');
+insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+values ('6', '30003', '学生C','60001', '教师A', '完成后端详细分析', '2023-07-04 20:13:19',
+        '2023-07-09 20:13:19', '未分配', '未通过', '正常完成后端详细分析');
+insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+values ('7', '30004', '学生D','60001', '教师A', '制定任务计划', '2023-07-04 20:13:19',
+        '2023-07-09 20:13:19', '分配', '未通过', '正常完成计划指定');
+insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+values ('8', '30005', '学生E','60001', '教师A', '完成任务计划', '2023-07-04 20:13:19',
+        '2023-07-09 20:13:19', '分配', '通过', '正常完完成计划指定');
+insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+values ('9', '30005', '学生E','60001', '教师A','完成前端设计', '2023-07-04 20:13:19',
+        '2023-07-09 20:13:19', '分配', '通过', '正常完成前端任务');
+insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+values ('10', '30005', '学生E','60001', '教师A', '完成后端设计', '2023-07-04 20:13:19',
+        '2023-07-09 20:13:19', '未分配', '未通过', '正常完成后端任务');
+insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+values ('11', '30005', '学生E','60001', '教师A', '完成大文档编写', '2023-07-04 20:13:19',
+        '2023-07-09 20:13:19', '分配', '未通过', '正常完成文档任务');
+insert into stu_wk(wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_des)
+values ('12', '30006', '学生F','60001', '教师A', '完成前端设计', '2023-07-04 20:13:19',
+        '2023-07-09 20:13:19', '分配', '通过', '正常完成前端设计');
 /* ************ 插入数据 ************ */
 
 /* ************ 任务状态 ************ */
