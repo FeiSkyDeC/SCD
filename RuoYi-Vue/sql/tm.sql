@@ -6,7 +6,7 @@ drop table if exists tm_tea_ma_stu;
 drop table if exists stu_wk;
 drop procedure if exists dropforeignkey;
 
-# drop 所有外键 if exists;
+# drop 所有外键 if exists;;
 /*DELIMITER //
 create procedure dropforeignkey()
 BEGIN
