@@ -94,7 +94,7 @@ create table tm_tea_ma_stu(
     primary key (tea_id)
 );*/
 /* ************ 外部表创建 ************ */
-
+/* 增添内容 */
 /* ************ 创建学生-任务表 ************ */
 create table stu_wk(
     wk_id mediumint not null AUTO_INCREMENT comment "任务序号",
