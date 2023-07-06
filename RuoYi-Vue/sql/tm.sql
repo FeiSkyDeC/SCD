@@ -1,4 +1,3 @@
-
 drop table if exists tm_tea;
 drop table if exists tm_stu;
 drop table if exists tm_mess;
@@ -6,8 +5,9 @@ drop table if exists tm_wk;
 drop table if exists tm_tea_ma_stu;
 drop table if exists stu_wk;
 drop procedure if exists dropforeignkey;
+
 # drop 所有外键 if exists;
-DELIMITER //
+/*DELIMITER //
 create procedure dropforeignkey()
 BEGIN
     # 获取与外键名相同的外键的数量，例：CONSTRAINT_NAME = 'cstu_tea'的数量
@@ -43,7 +43,7 @@ BEGIN
             drop foreign key cstu_wk;
     END IF;
 END //
-DELIMITER ;
+DELIMITER ;*/
 
 #如果想删除外键，就执行下面的语句
 #call dropforeignkey();
@@ -58,7 +58,7 @@ use ry_db;
 #alter table stu_wk drop foreign key cstu_wk;
 
 /* ************ 外部表 ************ */
-create table tm_tea(
+/*create table tm_tea(
     tea_id mediumint not null comment "教师唯一标识符",
     tea_name nvarchar(4) not null comment "教师姓名",
     primary key (tea_id)
@@ -92,27 +92,28 @@ create table tm_tea_ma_stu(
     tea_id mediumint not null comment "教师唯一标识符",
     stu_id mediumint not null comment "学生唯一标识符",
     primary key (tea_id)
-);
+);*/
 /* ************ 外部表创建 ************ */
 
 /* ************ 创建学生-任务表 ************ */
 create table stu_wk(
+    wk_id mediumint not null AUTO_INCREMENT comment "任务序号",
     stu_id mediumint not null comment "学生唯一标识符",
     tea_id mediumint not null comment "教师唯一标识符",
-    wk_id mediumint not null comment "任务唯一标识符",
     wk_name nvarchar(12) not null comment "任务名称",
     wk_start datetime not null comment "任务发布日期",
     wk_end datetime not null comment "任务截至日期",
     wk_stau nvarchar(12) not null comment "任务状态",
-    wk_up text not null comment "任务上传地址",
-    wk_add text not null comment "任务下载地址",
+    wk_ex_stau nvarchar(12) not null comment "审核状态",
+    #wk_up text not null comment "任务上传地址",
+    #wk_add text not null comment "任务下载地址",
     wk_des text not null comment "任务描述",
-    primary key (stu_id)
+    primary key (wk_id)
 );
 /* ************ 创建学生-任务表 ************ */
 
 /* ************ 定义外键约束 ************ */
-# 学生-任务表 与 教师表
+/*# 学生-任务表 与 教师表
 alter table stu_wk add constraint cstu_tea
     foreign key (tea_id) REFERENCES tm_tea(tea_id);
 # 学生-任务表 与 学生表
@@ -122,11 +123,11 @@ alter table stu_wk add constraint cstu_stu
 alter table stu_wk add constraint cstu_wk
     foreign key (wk_id) REFERENCES tm_wk(wk_id);
 alter table tm_tea add constraint ctea_tea
-    foreign key (tea_id) REFERENCES tm_tea_ma_stu(tea_id);
+    foreign key (tea_id) REFERENCES tm_tea_ma_stu(tea_id);*/
 /* ************ 定义外键约束 ************ */
 
 /* ************ 插入数据 ************ */
-insert into tm_tea(tea_id, tea_name)
+/*insert into tm_tea(tea_id, tea_name)
     values ('30001', '教师A');
 insert into tm_stu(stu_id, stu_name)
     values ('60001', '学生A');
@@ -136,10 +137,36 @@ insert into tm_wk(wk_id, wk_name, wk_start, wk_end, wk_stau, wk_des)
     values ('90001', '完成前端设计','2023-07-04 20:13:19',
             '2023-07-09 20:13:19', '正常', '正常完成任务');
 insert into tm_tea_ma_stu (tea_id, stu_id)
-    values ('30001', '60001');
-insert into stu_wk(stu_id, tea_id, wk_id, wk_name, wk_start, wk_end,
-                  wk_stau, wk_up, wk_add, wk_des)
-    values ('60001', '30001', '90001', '完成前端设计', '2023-07-04 20:13:19',
-           '2023-07-09 20:13:19', '正常', 'www.baidu.com', 'www.baidu.com', '正常完成任务');
+    values ('30001', '60001');*/
+
+# 以下向数据库 stu_wk 中插入4条语句
+insert into stu_wk(wk_id, stu_id, tea_id, wk_name, wk_start, wk_end,
+                   wk_stau, wk_ex_stau, wk_des)
+    values ('1', '30001', '60001', '完成前端设计', '2023-07-04 20:13:19',
+           '2023-07-09 20:13:19', '分配', '通过', '正常完成前端任务');
+insert into stu_wk(wk_id, stu_id, tea_id, wk_name, wk_start, wk_end,
+                   wk_stau, wk_ex_stau, wk_des)
+values ('2', '30001', '60001', '完成后端设计', '2023-07-04 20:13:19',
+        '2023-07-09 20:13:19', '未分配', '未通过', '正常完成后端任务');
+insert into stu_wk(wk_id, stu_id, tea_id, wk_name, wk_start, wk_end,
+                   wk_stau, wk_ex_stau, wk_des)
+values ('3', '30001', '60001', '完成大文档编写', '2023-07-04 20:13:19',
+        '2023-07-09 20:13:19', '分配', '未通过', '正常完成文档任务');
+insert into stu_wk(wk_id, stu_id, tea_id, wk_name, wk_start, wk_end,
+                   wk_stau, wk_ex_stau, wk_des)
+values ('4', '30001', '60001', '完成小文档设计', '2023-07-04 20:13:19',
+        '2023-07-09 20:13:19', '分配', '通过', '正常完成任务');
+
 /* ************ 插入数据 ************ */
+
+/* ************ 任务状态 ************ */
+/*insert into sys_dict_type(dict_id, dict_name, dict_type, status, create_by,
+                          create_time, update_by, update_time, remark)
+    values ('4', '任务状态', 'sys_job_status', '0', 'admin', '2023-06-30 12:35:40',
+            'admin', '2023-07-05 19:49:44', '任务状态列表');
+
+insert into sys_dict_data(dict_code, dict_sort, dict_label, dict_value, dict_type, css_class, list_class,
+                          is_default, status, create_by, create_time, update_by, update_time, remark)
+    values ()*/
+/* ************ 任务状态 ************ */
 
