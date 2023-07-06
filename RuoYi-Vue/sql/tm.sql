@@ -48,6 +48,8 @@ DELIMITER ;*/
 #如果想删除外键，就执行下面的语句
 #call dropforeignkey();
 
+/* 测试推送 */
+
 # 创建数据库 ry_db
 create database if not exists ry_db;
 use ry_db;
@@ -94,7 +96,7 @@ create table tm_tea_ma_stu(
     primary key (tea_id)
 );*/
 /* ************ 外部表创建 ************ */
-/* 增添内容 */
+
 /* ************ 创建学生-任务表 ************ */
 create table stu_wk(
     wk_id mediumint not null AUTO_INCREMENT comment "任务序号",
