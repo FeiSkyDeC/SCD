@@ -1,5 +1,6 @@
 package com.ruoyi.student.domain;
 
+import java.util.List;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -51,13 +52,12 @@ public class StuWk extends BaseEntity
     private Date wkEnd;
 
     /** 任务状态 */
-    @Deprecated
     @Excel(name = "任务状态")
-    private Boolean wkStau;
+    private String wkStau;
 
     /** 审核状态 */
     @Excel(name = "审核状态")
-    private Boolean wkExStau;
+    private String wkExStau;
 
     /** 任务下载路径 */
     @Excel(name = "任务下载路径")
@@ -66,6 +66,9 @@ public class StuWk extends BaseEntity
     /** 任务描述 */
     @Excel(name = "任务描述")
     private String wkDes;
+
+    /** 学生信息信息 */
+    private List<TmStu> tmStuList;
 
     public void setWkId(Long wkId) 
     {
@@ -85,12 +88,12 @@ public class StuWk extends BaseEntity
     {
         return stuId;
     }
-    public void setStuName(String stuName)
+    public void setStuName(String stuName) 
     {
         this.stuName = stuName;
     }
 
-    public String getStuName()
+    public String getStuName() 
     {
         return stuName;
     }
@@ -103,12 +106,12 @@ public class StuWk extends BaseEntity
     {
         return teaId;
     }
-    public void setTeaName(String teaName)
+    public void setTeaName(String teaName) 
     {
         this.teaName = teaName;
     }
 
-    public String getTeaName()
+    public String getTeaName() 
     {
         return teaName;
     }
@@ -139,21 +142,21 @@ public class StuWk extends BaseEntity
     {
         return wkEnd;
     }
-    public void setWkStau(Boolean wkStau)
+    public void setWkStau(String wkStau) 
     {
         this.wkStau = wkStau;
     }
 
-    public Boolean getWkStau()
+    public String getWkStau() 
     {
         return wkStau;
     }
-    public void setWkExStau(Boolean wkExStau)
+    public void setWkExStau(String wkExStau) 
     {
         this.wkExStau = wkExStau;
     }
 
-    public Boolean getWkExStau()
+    public String getWkExStau() 
     {
         return wkExStau;
     }
@@ -176,6 +179,16 @@ public class StuWk extends BaseEntity
         return wkDes;
     }
 
+    public List<TmStu> getTmStuList()
+    {
+        return tmStuList;
+    }
+
+    public void setTmStuList(List<TmStu> tmStuList)
+    {
+        this.tmStuList = tmStuList;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
@@ -191,6 +204,7 @@ public class StuWk extends BaseEntity
             .append("wkExStau", getWkExStau())
             .append("wkAdd", getWkAdd())
             .append("wkDes", getWkDes())
+            .append("tmStuList", getTmStuList())
             .toString();
     }
 }

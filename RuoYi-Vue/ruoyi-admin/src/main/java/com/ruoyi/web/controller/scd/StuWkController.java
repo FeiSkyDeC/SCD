@@ -31,7 +31,7 @@ public class StuWkController extends BaseController
     /**
      * 查询学生任务列表
      */
-    @PreAuthorize("@ss.hasRole('teacher')")
+    @PreAuthorize("@ss.hasPermi('ruoyi-stu_wk:stu_wk:list')")
     @GetMapping("/list")
     public TableDataInfo list(StuWk stuWk)
     {
@@ -43,7 +43,7 @@ public class StuWkController extends BaseController
     /**
      * 导出学生任务列表
      */
-    @PreAuthorize("@ss.hasRole('teacher')")
+    @PreAuthorize("@ss.hasPermi('ruoyi-stu_wk:stu_wk:export')")
     @Log(title = "学生任务", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HttpServletResponse response, StuWk stuWk)
@@ -56,7 +56,7 @@ public class StuWkController extends BaseController
     /**
      * 获取学生任务详细信息
      */
-    @PreAuthorize("@ss.hasRole('teacher')")
+    @PreAuthorize("@ss.hasPermi('ruoyi-stu_wk:stu_wk:query')")
     @GetMapping(value = "/{wkId}")
     public AjaxResult getInfo(@PathVariable("wkId") Long wkId)
     {
@@ -66,7 +66,7 @@ public class StuWkController extends BaseController
     /**
      * 新增学生任务
      */
-    @PreAuthorize("@ss.hasRole('teacher')")
+    @PreAuthorize("@ss.hasPermi('ruoyi-stu_wk:stu_wk:add')")
     @Log(title = "学生任务", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody StuWk stuWk)
@@ -77,7 +77,7 @@ public class StuWkController extends BaseController
     /**
      * 修改学生任务
      */
-    @PreAuthorize("@ss.hasRole('teacher')")
+    @PreAuthorize("@ss.hasPermi('ruoyi-stu_wk:stu_wk:edit')")
     @Log(title = "学生任务", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody StuWk stuWk)
@@ -88,7 +88,7 @@ public class StuWkController extends BaseController
     /**
      * 删除学生任务
      */
-    @PreAuthorize("@ss.hasRole('teacher')")
+    @PreAuthorize("@ss.hasPermi('ruoyi-stu_wk:stu_wk:remove')")
     @Log(title = "学生任务", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{wkIds}")
     public AjaxResult remove(@PathVariable Long[] wkIds)

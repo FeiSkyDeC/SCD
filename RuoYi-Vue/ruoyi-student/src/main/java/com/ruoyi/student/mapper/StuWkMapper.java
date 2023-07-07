@@ -1,8 +1,8 @@
 package com.ruoyi.student.mapper;
 
-import com.ruoyi.student.domain.StuWk;
-
 import java.util.List;
+import com.ruoyi.student.domain.StuWk;
+import com.ruoyi.student.domain.TmStu;
 
 /**
  * 学生任务Mapper接口
@@ -59,4 +59,29 @@ public interface StuWkMapper
      * @return 结果
      */
     public int deleteStuWkByWkIds(Long[] wkIds);
+
+    /**
+     * 批量删除学生信息
+     * 
+     * @param wkIds 需要删除的数据主键集合
+     * @return 结果
+     */
+    public int deleteTmStuByStuIds(Long[] wkIds);
+    
+    /**
+     * 批量新增学生信息
+     * 
+     * @param tmStuList 学生信息列表
+     * @return 结果
+     */
+    public int batchTmStu(List<TmStu> tmStuList);
+    
+
+    /**
+     * 通过学生任务主键删除学生信息信息
+     * 
+     * @param wkId 学生任务ID
+     * @return 结果
+     */
+    public int deleteTmStuByStuId(Long wkId);
 }
