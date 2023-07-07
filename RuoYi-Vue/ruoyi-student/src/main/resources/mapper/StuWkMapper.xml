@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.student.mapper.StuWkMapper">
+    
+    <resultMap type="StuWk" id="StuWkResult">
+        <result property="wkId"    column="wk_id"    />
+        <result property="stuId"    column="stu_id"    />
+        <result property="stuName"    column="stu_name"    />
+        <result property="teaId"    column="tea_id"    />
+        <result property="teaName"    column="tea_name"    />
+        <result property="wkName"    column="wk_name"    />
+        <result property="wkStart"    column="wk_start"    />
+        <result property="wkEnd"    column="wk_end"    />
+        <result property="wkStau"    column="wk_stau"    />
+        <result property="wkExStau"    column="wk_ex_stau"    />
+        <result property="wkAdd"    column="wk_addr"    />
+        <result property="wkComm"    column="wk_comm"    />
+        <result property="wkDes"    column="wk_des"    />
+    </resultMap>
+
+    <resultMap id="StuWkTmStuResult" type="StuWk" extends="StuWkResult">
+        <collection property="tmStuList" notNullColumn="sub_stu_id" javaType="java.util.List" resultMap="TmStuResult" />
+    </resultMap>
+
+    <resultMap type="TmStu" id="TmStuResult">
+        <result property="stuId"    column="sub_stu_id"    />
+        <result property="userId"    column="sub_user_id"    />
+        <result property="stuName"    column="sub_stu_name"    />
+    </resultMap>
+
+    <sql id="selectStuWkVo">
+        select wk_id, stu_id, stu_name, tea_id, tea_name, wk_name, wk_start, wk_end, wk_stau, wk_ex_stau, wk_addr, wk_comm, wk_des from stu_wk
+    </sql>
+
+    <select id="selectStuWkList" parameterType="StuWk" resultMap="StuWkResult">
+        <include refid="selectStuWkVo"/>
+        <where>  
+            <if test="stuId != null "> and stu_id = #{stuId}</if>
+            <if test="stuName != null  and stuName != ''"> and stu_name like concat('%', #{stuName}, '%')</if>
+            <if test="teaId != null "> and tea_id = #{teaId}</if>
+            <if test="teaName != null  and teaName != ''"> and tea_name like concat('%', #{teaName}, '%')</if>
+            <if test="wkName != null  and wkName != ''"> and wk_name like concat('%', #{wkName}, '%')</if>
+            <if test="wkStart != null "> and wk_start = #{wkStart}</if>
+            <if test="wkEnd != null "> and wk_end = #{wkEnd}</if>
+            <if test="wkStau != null  and wkStau != ''"> and wk_stau = #{wkStau}</if>
+            <if test="wkExStau != null  and wkExStau != ''"> and wk_ex_stau = #{wkExStau}</if>
+            <if test="wkAdd != null  and wkAdd != ''"> and wk_addr = #{wkAdd}</if>
+            <if test="wkComm != null  and wkComm != ''"> and wk_addr = #{wkComm}</if>
+            <if test="wkDes != null  and wkDes != ''"> and wk_des = #{wkDes}</if>
+        </where>
+    </select>
+    
+    <select id="selectStuWkByWkId" parameterType="Long" resultMap="StuWkTmStuResult">
+        select a.wk_id, a.stu_id, a.stu_name, a.tea_id, a.tea_name, a.wk_name, a.wk_start, a.wk_end, a.wk_stau, a.wk_ex_stau, a.wk_addr, a.wk_comm, a.wk_des,
+ b.stu_id as sub_stu_id, b.stu_name as sub_stu_name
+        from stu_wk a
+        left join tm_stu b on b.user_id = a.stu_id
+        where a.wk_id = #{wkId}
+    </select>
+        
+    <insert id="insertStuWk" parameterType="StuWk" useGeneratedKeys="true" keyProperty="wkId">
+        insert into stu_wk
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="stuId != null">stu_id,</if>
+            <if test="stuName != null and stuName != ''">stu_name,</if>
+            <if test="teaId != null">tea_id,</if>
+            <if test="teaName != null and teaName != ''">tea_name,</if>
+            <if test="wkName != null and wkName != ''">wk_name,</if>
+            <if test="wkStart != null">wk_start,</if>
+            <if test="wkEnd != null">wk_end,</if>
+            <if test="wkStau != null and wkStau != ''">wk_stau,</if>
+            <if test="wkExStau != null and wkExStau != ''">wk_ex_stau,</if>
+            <if test="wkAdd != null and wkAdd != ''">wk_addr,</if>
+            <if test="wkComm != null and wkComm != ''">wk_comm,</if>
+            <if test="wkDes != null and wkDes != ''">wk_des,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="stuId != null">#{stuId},</if>
+            <if test="stuName != null and stuName != ''">#{stuName},</if>
+            <if test="teaId != null">#{teaId},</if>
+            <if test="teaName != null and teaName != ''">#{teaName},</if>
+            <if test="wkName != null and wkName != ''">#{wkName},</if>
+            <if test="wkStart != null">#{wkStart},</if>
+            <if test="wkEnd != null">#{wkEnd},</if>
+            <if test="wkStau != null and wkStau != ''">#{wkStau},</if>
+            <if test="wkExStau != null and wkExStau != ''">#{wkExStau},</if>
+            <if test="wkAdd != null and wkAdd != ''">#{wkAdd},</if>
+            <if test="wkComm != null and wkComm != ''">#{wkComm},</if>
+            <if test="wkDes != null and wkDes != ''">#{wkDes},</if>
+         </trim>
+    </insert>
+
+    <update id="updateStuWk" parameterType="StuWk">
+        update stu_wk
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="stuId != null">stu_id = #{stuId},</if>
+            <if test="stuName != null and stuName != ''">stu_name = #{stuName},</if>
+            <if test="teaId != null">tea_id = #{teaId},</if>
+            <if test="teaName != null and teaName != ''">tea_name = #{teaName},</if>
+            <if test="wkName != null and wkName != ''">wk_name = #{wkName},</if>
+            <if test="wkStart != null">wk_start = #{wkStart},</if>
+            <if test="wkEnd != null">wk_end = #{wkEnd},</if>
+            <if test="wkStau != null and wkStau != ''">wk_stau = #{wkStau},</if>
+            <if test="wkExStau != null and wkExStau != ''">wk_ex_stau = #{wkExStau},</if>
+            <if test="wkAdd != null and wkAdd != ''">wk_addr = #{wkAdd},</if>
+            <if test="wkComm != null and wkComm != ''">wk_comm = #{wkComm},</if>
+            <if test="wkDes != null and wkDes != ''">wk_des = #{wkDes},</if>
+        </trim>
+        where wk_id = #{wkId}
+    </update>
+
+    <delete id="deleteStuWkByWkId" parameterType="Long">
+        delete from stu_wk where wk_id = #{wkId}
+    </delete>
+
+    <delete id="deleteStuWkByWkIds" parameterType="String">
+        delete from stu_wk where wk_id in 
+        <foreach item="wkId" collection="array" open="(" separator="," close=")">
+            #{wkId}
+        </foreach>
+    </delete>
+    
+    <delete id="deleteTmStuByStuIds" parameterType="String">
+        delete from tm_stu where user_id in
+        <foreach item="userId" collection="array" open="(" separator="," close=")">
+            #{userId}
+        </foreach>
+    </delete>
+
+    <delete id="deleteTmStuByStuId" parameterType="Long">
+        delete from tm_stu where user_id = #{userId}
+    </delete>
+
+    <insert id="batchTmStu">
+        insert into tm_stu( user_id, stu_name) values
+		<foreach item="item" index="index" collection="list" separator=",">
+            ( #{item.userId}, #{item.stuName})
+        </foreach>
+    </insert>
+</mapper>
