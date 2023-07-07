@@ -155,13 +155,14 @@
             <el-table-column label="任务描述" align="center" prop="wkDes" />-->
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
-          <el-button
-            type="text"
-            icon="el-icon-plus"
-            size="mini"
-            @click="lay"
-          >任务详细
-          </el-button>
+          <router-link :to="'/scd/teacher-stu/index/' + scope.row.stuId" class="link-type">
+            <el-button
+              type="text"
+              icon="el-icon-plus"
+              size="mini"
+            >任务详细
+            </el-button>
+          </router-link>
           <el-button
             size="mini"
             type="text"
@@ -236,8 +237,8 @@
       </div>
     </el-dialog>
     <!-- 添加或修改学生任务对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
+    <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
+      <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-form-item label="学生唯一标识符" prop="stuId">
           <el-input v-model="form.stuId" placeholder="请输入学生唯一标识符"/>
         </el-form-item>
@@ -277,7 +278,7 @@
           <el-input v-model="form.wkExStau" placeholder="请输入审核状态"/>
         </el-form-item>
         <el-form-item label="任务下载路径" prop="wkAdd">
-          <file-upload v-model="form.wkAdd"/>
+          <file-upload v-model="form.wkAdd" :file-type="['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'pdf']"/>
         </el-form-item>
         <el-form-item label="任务描述" prop="wkDes">
           <el-input v-model="form.wkDes" type="textarea" placeholder="请输入内容"/>

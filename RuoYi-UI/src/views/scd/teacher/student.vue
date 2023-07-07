@@ -20,14 +20,22 @@
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+        <el-button
+          type="warning"
+          plain
+          icon="el-icon-close"
+          size="mini"
+          @click="handleClose"
+        >关闭
+        </el-button>
       </el-form-item>
     </el-form>
 
     <el-table v-loading="loading" :data="wkList" @selection-change="handleSelectionChange">
-      <el-table-column label="任务序号" align="center" prop="wkId" />
-      <el-table-column label="学生ID" align="center" prop="stuId" />
-      <el-table-column label="任务名称" align="center" prop="wkName" />
-      <el-table-column label="审核状态" align="center" prop="wkExStau" />
+      <el-table-column label="任务序号" align="center" prop="wkId"/>
+      <el-table-column label="学生ID" align="center" prop="stuId"/>
+      <el-table-column label="任务名称" align="center" prop="wkName"/>
+      <el-table-column label="审核状态" align="center" prop="wkExStau"/>
       <el-table-column label="编辑" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -36,14 +44,23 @@
             icon="el-icon-edit"
             @click="handleUpdate(scope.row)"
             v-hasPermi="['taskmgr:wk:edit']"
-          >修改</el-button>
+          >修改
+          </el-button>
           <el-button
             size="mini"
             type="text"
             icon="el-icon-view"
             @click="handleView(scope.row)"
             v-hasPermi="['taskmgr:wk:query']"
-          >任务内容</el-button>
+          >任务内容
+          </el-button>
+          <el-button
+            size="mini"
+            type="text"
+            icon="el-icon-view"
+            @click="handleCommit(scope.row)"
+          >下载提交
+          </el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -79,16 +96,16 @@
             <el-form-item label="任务内容：" prop="wkDes">{{ form.wkDes }}</el-form-item>
           </el-col>
         </el-row>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click="cancel">关 闭</el-button>
-      </div>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="cancel">关 闭</el-button>
+        </div>
       </el-form>
     </el-dialog>
   </div>
 </template>
 
 <script>
-import { listTask, getTask, delTask, addTask, updateTask } from "@/api/scd/task";
+import {listTask, getTask, delTask, addTask, updateTask} from "@/api/scd/task";
 
 export default {
   name: "Wk",
@@ -135,37 +152,37 @@ export default {
       // 表单校验
       rules: {
         wkId: [
-          { required: true, message: "任务序号不能为空", trigger: "blur" }
+          {required: true, message: "任务序号不能为空", trigger: "blur"}
         ],
         stuId: [
-          { required: true, message: "学生唯一标识符不能为空", trigger: "blur" }
+          {required: true, message: "学生唯一标识符不能为空", trigger: "blur"}
         ],
         stuName: [
-          { required: true, message: "学生姓名不能为空", trigger: "blur" }
+          {required: true, message: "学生姓名不能为空", trigger: "blur"}
         ],
         teaId: [
-          { required: true, message: "教师唯一标识符不能为空", trigger: "blur" }
+          {required: true, message: "教师唯一标识符不能为空", trigger: "blur"}
         ],
         teaName: [
-          { required: true, message: "教师姓名不能为空", trigger: "blur" }
+          {required: true, message: "教师姓名不能为空", trigger: "blur"}
         ],
         wkName: [
-          { required: true, message: "任务名称不能为空", trigger: "blur" }
+          {required: true, message: "任务名称不能为空", trigger: "blur"}
         ],
         wkStart: [
-          { required: true, message: "任务发布日期不能为空", trigger: "blur" }
+          {required: true, message: "任务发布日期不能为空", trigger: "blur"}
         ],
         wkEnd: [
-          { required: true, message: "任务截至日期不能为空", trigger: "blur" }
+          {required: true, message: "任务截至日期不能为空", trigger: "blur"}
         ],
         wkStau: [
-          { required: true, message: "任务状态不能为空", trigger: "blur" }
+          {required: true, message: "任务状态不能为空", trigger: "blur"}
         ],
         wkExStau: [
-          { required: true, message: "审核状态不能为空", trigger: "change" }
+          {required: true, message: "审核状态不能为空", trigger: "change"}
         ],
         wkDes: [
-          { required: true, message: "任务描述不能为空", trigger: "blur" }
+          {required: true, message: "任务描述不能为空", trigger: "blur"}
         ]
       }
     };
@@ -176,7 +193,9 @@ export default {
   methods: {
     /** 查询任务一览列表 */
     getList() {
+      const stuId = this.$route.params["userId"];
       this.loading = true;
+      this.queryParams.stuId = stuId;
       listTask(this.queryParams).then(response => {
         this.wkList = response.rows;
         this.total = response.total;
@@ -205,6 +224,15 @@ export default {
       };
       this.resetForm("form");
     },
+    handleCommit(row) {
+      if (row.wkComm == null || row.wkComm == "" || row.wkComm == undefined) {
+        this.$modal.msgError("该学生没有提交任务");
+
+        return;
+      }
+
+      this.$download.resource(row.wkComm);
+    },
     /** 搜索按钮操作 */
     handleQuery() {
       this.queryParams.pageNum = 1;
@@ -218,7 +246,7 @@ export default {
     // 多选框选中数据
     handleSelectionChange(selection) {
       this.ids = selection.map(item => item.wkId)
-      this.single = selection.length!==1
+      this.single = selection.length !== 1
       this.multiple = !selection.length
     },
     /** 新增按钮操作 */
@@ -239,16 +267,21 @@ export default {
       });
     },
     /** 任务状态查看操作 */
-    onOpen() {},
+    onOpen() {
+    },
     onClose() {
-  this.$refs['elForm'].resetFields()
-},
-close() {
-  this.$emit('update:visible', false)
-},
+      this.$refs['elForm'].resetFields()
+    },
+    close() {
+      this.$emit('update:visible', false)
+    },
     handleView(row) {
-        this.opens = true;
-        this.form = row;
+      this.opens = true;
+      this.form = row;
+    },
+    handleClose() {
+      const obj = {path: "/scd/teacher"};
+      this.$tab.closeOpenPage(obj);
     },
     /** 提交按钮 */
     submitForm() {
@@ -274,12 +307,13 @@ close() {
     /** 删除按钮操作 */
     handleDelete(row) {
       const wkIds = row.wkId || this.ids;
-      this.$modal.confirm('是否确认删除任务一览编号为"' + wkIds + '"的数据项？').then(function() {
+      this.$modal.confirm('是否确认删除任务一览编号为"' + wkIds + '"的数据项？').then(function () {
         return delTask(wkIds);
       }).then(() => {
         this.getList();
         this.$modal.msgSuccess("删除成功");
-      }).catch(() => {});
+      }).catch(() => {
+      });
     },
     /** 导出按钮操作 */
     handleExport() {

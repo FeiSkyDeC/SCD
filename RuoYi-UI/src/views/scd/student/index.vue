@@ -7,7 +7,7 @@
         <el-input
           readonly
           v-model="queryParams.stuId"
-          v-text="30001"
+          v-text="queryParams.stuId"
         />
       </el-form-item>
     </el-form>
@@ -31,17 +31,17 @@
         <file-upload v-model="form.wkDes"/>
         <template slot-scope="scope">
           <el-button
-            type="warning"
+            type="text"
             icon="el-icon-download"
             size="mini"
-            @click="handleExport"
+            @click="handleExport(scope.row)"
           >接收
           </el-button>
           <el-button
             size="mini"
-            type="warning"
+            type="text"
             icon="el-icon-upload2"
-            @click="handleImport"
+            @click="handleImport(scope.row)"
           >上传
           </el-button>
         </template>
@@ -56,63 +56,14 @@
       @pagination="getList"
     />
 
-    <!-- 添加或修改【请填写功能名称】对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="学生唯一标识符" prop="stuId">
-          <el-input v-model="form.stuId" placeholder="请输入学生唯一标识符"/>
-        </el-form-item>
-        <el-form-item label="学生姓名" prop="stuName">
-          <el-input v-model="form.stuName" placeholder="请输入学生姓名"/>
-        </el-form-item>
-        <el-form-item label="教师唯一标识符" prop="teaId">
-          <el-input v-model="form.teaId" placeholder="请输入教师唯一标识符"/>
-        </el-form-item>
-        <el-form-item label="教师姓名" prop="teaName">
-          <el-input v-model="form.teaName" placeholder="请输入教师姓名"/>
-        </el-form-item>
-        <el-form-item label="任务名称" prop="wkName">
-          <el-input v-model="form.wkName" placeholder="请输入任务名称"/>
-        </el-form-item>
-        <el-form-item label="任务发布日期" prop="wkStart">
-          <el-date-picker clearable
-                          v-model="form.wkStart"
-                          type="date"
-                          value-format="yyyy-MM-dd"
-                          placeholder="请选择任务发布日期">
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item label="任务截至日期" prop="wkEnd">
-          <el-date-picker clearable
-                          v-model="form.wkEnd"
-                          type="date"
-                          value-format="yyyy-MM-dd"
-                          placeholder="请选择任务截至日期">
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item label="任务状态" prop="wkStau">
-          <el-input v-model="form.wkStau" placeholder="请输入任务状态"/>
-        </el-form-item>
-        <el-form-item label="审核状态" prop="wkExStau">
-          <el-input v-model="form.wkExStau" placeholder="请输入审核状态"/>
-        </el-form-item>
-        <el-form-item label="任务描述" prop="wkDes">
-          <el-input v-model="form.wkDes" type="textarea" placeholder="请输入内容"/>
-        </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="submitForm">确 定</el-button>
-        <el-button @click="cancel">取 消</el-button>
-      </div>
-    </el-dialog>
     <!-- 用户导入对话框 -->
     <el-dialog :title="upload.title" :visible.sync="upload.open" width="400px">
       <el-upload
         ref="upload"
-        :limit="1"
-        accept=".xlsx, .xls"
+        :limit="20"
+        :file-type="['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'pdf']"
         :headers="upload.headers"
-        :action="upload.url + '?updateSupport=' + upload.updateSupport"
+        :action="upload.url"
         :disabled="upload.isUploading"
         :on-progress="handleFileUploadProgress"
         :on-success="handleFileSuccess"
@@ -125,12 +76,11 @@
           <em>点击上传</em>
         </div>
         <div class="el-upload__tip" slot="tip">
-          <el-checkbox v-model="upload.updateSupport"/>
-          是否更新已经存在的用户数据
           <el-link type="info" style="font-size:12px" @click="importTemplate">下载模板</el-link>
         </div>
-        <div class="el-upload__tip" style="color:red" slot="tip">提示：仅允许导入“xls”或“xlsx”格式文件！</div>
+        <div class="el-upload__tip" style="color:red" slot="tip">提示：文件大小不超过 20 MB，可上传文件类型: .doc, .docx, .xls, .xlsx, .ppt, .pptx, .txt, .pdf</div>
       </el-upload>
+
       <div slot="footer" class="dialog-footer">
         <el-button type="primary" @click="submitFileForm">确 定</el-button>
         <el-button @click="upload.open = false">取 消</el-button>
@@ -142,6 +92,7 @@
 <script>
 import {listTask, getTask, delTask, addTask, updateTask} from "@/api/scd/task";
 import {getToken} from "@/utils/auth";
+import {getUserProfile} from "@/api/system/user";
 
 export default {
   name: "Wk",
@@ -161,6 +112,7 @@ export default {
       total: 0,
       // 【请填写功能名称】表格数据
       wkList: [],
+      wkId: null,
       // 弹出层标题
       title: "",
       // 是否显示弹出层
@@ -229,7 +181,7 @@ export default {
         // 设置上传的请求头部
         headers: {Authorization: "Bearer " + getToken()},
         // 上传的地址
-        url: process.env.VUE_APP_BASE_API + "/student/wk/importData"
+        url: process.env.VUE_APP_BASE_API + "/common/upload"
       },
     };
   },
@@ -238,13 +190,16 @@ export default {
   },
   methods: {
     /** 查询【请填写功能名称】列表 */
-    getList() {
+    async getList() {
       this.loading = true;
-      listTask(this.queryParams).then(response => {
-        this.wkList = response.rows;
-        this.total = response.total;
-        this.loading = false;
-      });
+      const userRes = await getUserProfile();
+      const user = userRes.data;
+      this.queryParams.stuId = user["userId"];
+      this.queryParams.stuId = 30007; // debug
+      const taskRes = await listTask(this.queryParams);
+      this.wkList = taskRes.rows;
+      this.total = taskRes.total;
+      this.loading = false;
     },
     // 取消按钮
     cancel() {
@@ -299,8 +254,8 @@ export default {
         this.form = response.data;
         this.open = true;
         this.title = "修改【请填写功能名称】";
+        this.upload.fileList = [{name: this.form.wkName, url: this.form.wkComm}];
       });
-      this.upload.fileList = [{name: this.form.wkName, url: this.form.filePath}];
     },
     /** 提交按钮 */
     submitForm() {
@@ -334,26 +289,20 @@ export default {
       });
     },
     /** 导出按钮操作 */
-    handleExport() {
+    async handleExport(row) {
       const queryParams = this.queryParams;
-      this.$confirm('是否确认接受任务?', "提示", {
+      await this.$confirm('是否确认接受任务?', "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
-      }).then(function () {
-        return exportStudent(queryParams);
-      }).then(response => {
-        this.download('student/wk/export', {
-          ...this.queryParams
-        }, `wk_${new Date().getTime()}.xlsx`)
       })
-        .catch(function () {
-        })
+      this.$download.resource(row.wkAdd)
     },
 
     /** 导入按钮操作 */
-    handleImport() {
-      this.upload.title = "用户导入";
+    handleImport(row) {
+      this.upload.title = "任务提交";
+      this.wkId = row.wkId;
       this.upload.open = true;
     },
     /** 下载模板操作 */
@@ -370,9 +319,19 @@ export default {
     handleFileSuccess(response, file, fileList) {
       this.upload.open = false;
       this.upload.isUploading = false;
-      this.$refs.upload.clearFiles();
-      this.$alert(response.msg, "导入结果", {dangerouslyUseHTMLString: true});
-      this.getList();
+      const path = file.response.fileName;
+      getTask(this.wkId).then(response => {
+        this.form = response.data;
+        this.form.wkComm = path;
+        console.log(this.form);
+        updateTask(this.form).then(response => {
+          this.$modal.msgSuccess("上传成功");
+          this.open = false;
+          this.getList();
+          this.$refs.upload.clearFiles();
+          this.wkId = null;
+        });
+      });
     },
 // 提交上传文件
     submitFileForm() {

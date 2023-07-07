@@ -67,6 +67,17 @@ public class StuWk extends BaseEntity
     @Excel(name = "任务描述")
     private String wkDes;
 
+    public String getWkComm() {
+        return wkComm;
+    }
+
+    public void setWkComm(String wkComm) {
+        this.wkComm = wkComm;
+    }
+
+    @Excel(name = "任务提交路径")
+    private String wkComm;
+
     /** 学生信息信息 */
     private List<TmStu> tmStuList;
 

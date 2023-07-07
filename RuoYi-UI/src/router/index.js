@@ -135,6 +135,20 @@ export const dynamicRoutes = [
     ]
   },
   {
+    path: '/scd/teacher-stu',
+    component: Layout,
+    hidden: true,
+    permissions: ['scd:task:list'],
+    children: [
+      {
+        path: 'index/:userId(\\d+)',
+        component: () => import('@/views/scd/teacher/student'),
+        name: 'Wk',
+        meta: { title: '学生任务', activeMenu: '/scd/teacher' }
+      }
+    ]
+  },
+  {
     path: '/monitor/job-log',
     component: Layout,
     hidden: true,
