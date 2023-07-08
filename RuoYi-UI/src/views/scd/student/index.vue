@@ -2,6 +2,17 @@
 
 
   <div class="app-container">
+<!--    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
+      <el-form-item label="学生ID" prop="stuId">
+        <el-input
+          v-model="queryParams.stuId"
+          placeholder="请输入学生唯一标识符"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+    </el-form>-->
+
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="学号" prop="stuName">
         <el-input
@@ -194,8 +205,8 @@ export default {
       this.loading = true;
       const userRes = await getUserProfile();
       const user = userRes.data;
-      this.queryParams.stuId = user["userId"];
-      this.queryParams.stuId = 30007; // debug
+      this.queryParams.stuId = user["stuId"];
+      this.queryParams.stuId = 30001; // debug
       const taskRes = await listTask(this.queryParams);
       this.wkList = taskRes.rows;
       this.total = taskRes.total;
