@@ -117,8 +117,9 @@
 
     <el-table v-loading="loading" :data="stu_wkList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
-      <el-table-column label="任务序号" align="center" prop="wkId"/>
+      <el-table-column label="序号" width="55" align="center" prop="wkId"/>
       <el-table-column label="学生ID" align="center" prop="stuId"/>
+      <el-table-column label="学生姓名" align="center" prop="stuName"/>
       <el-table-column label="学生信息" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -127,7 +128,7 @@
             icon="el-icon-edit"
             @click="handlexxx(scope.row)"
             v-hasPermi="['ruoyi-stu_wk:stu_wk:edit']"
-          >查看详细信息
+          >查看
           </el-button>
         </template>
       </el-table-column>
