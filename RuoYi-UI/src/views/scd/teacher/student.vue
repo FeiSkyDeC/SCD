@@ -33,7 +33,7 @@
 
     <el-table v-loading="loading" :data="wkList" @selection-change="handleSelectionChange">
       <el-table-column label="任务序号" align="center" prop="wkId"/>
-      <el-table-column label="学生ID" align="center" prop="stuId"/>
+<!--      <el-table-column label="学生ID" align="center" prop="stuId"/>-->
       <el-table-column label="任务名称" align="center" prop="wkName"/>
       <el-table-column label="审核状态" align="center" prop="wkExStau"/>
       <el-table-column label="编辑" align="center" class-name="small-padding fixed-width">
