@@ -51,8 +51,8 @@ DELIMITER ;*/
 /* 测试推送 */
 
 # 创建数据库 ry_db
-create database if not exists ry_db;
-use ry_db;
+create database if not exists ryvue;
+use ryvue;
 
 # 如果想单独修改表，可以执行以下语句删除表外键
 #alter table stu_wk drop foreign key cstu_tea;
