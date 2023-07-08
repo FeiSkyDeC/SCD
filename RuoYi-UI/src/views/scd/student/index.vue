@@ -14,7 +14,7 @@
 
     <el-table v-loading="loading" :data="wkList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
-      <el-table-column label="任务序号" align="center" prop="wkId"/>
+      <el-table-column label="任务序号" width="75" align="center" prop="wkId"/>
       <el-table-column label="任务名称" align="center" prop="wkName"/>
       <el-table-column label="任务发布日期" align="center" prop="wkStart" width="180">
         <template slot-scope="scope">
