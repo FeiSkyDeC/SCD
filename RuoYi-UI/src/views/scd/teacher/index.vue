@@ -59,6 +59,7 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
+
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <!--        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>-->
@@ -284,7 +285,13 @@
         <el-form-item label="任务描述" prop="wkDes">
           <el-input v-model="form.wkDes" type="textarea" placeholder="请输入内容"/>
         </el-form-item>
-        <el-divider content-position="center">学生信息信息</el-divider>
+        <el-form-item label="教师姓名" prop="teaName">
+          <el-input v-model="form.teaName" type="textarea" placeholder="请确认签名！"/>
+        </el-form-item>
+        <el-form-item label="教师id" prop="teaId">
+          <el-input v-model="form.teaId" type="textarea" placeholder="请确认Id！"/>
+        </el-form-item>
+        <el-divider content-position="center">学生信息</el-divider>
         <el-row :gutter="10" class="mb8">
           <el-col :span="1.5">
             <el-button type="primary" icon="el-icon-plus" size="mini" @click="handleAddTmStu">添加</el-button>
