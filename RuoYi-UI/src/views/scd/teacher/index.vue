@@ -198,8 +198,8 @@
     <el-dialog :title="title2" :visible.sync="open2" width="500px" append-to-body :destroy-on-close="true"
                :show-close="false" :close-on-click-modal="false"
                :close-on-press-escape="false">
-      <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-        <el-form-item label="请确认您的教师ID" prop="teaId">
+      <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="110px">
+        <el-form-item label="教师ID" prop="teaId">
           <el-input
             v-model="queryParams.teaId"
             placeholder="请输入教师ID"
@@ -210,14 +210,14 @@
         <el-form-item>
           <el-button type="primary" icon="el-icon-search" size="mini" @click="handletcqd">确定</el-button>
         </el-form-item>
-        <el-divider content-position="center" >提示：只有点确定才能关闭弹窗</el-divider>
+        <el-divider content-position="center">欢迎使用任务管理系统！</el-divider>
       </el-form>
     </el-dialog>
 
 
     <el-dialog :title="title1" :visible.sync="open1" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-divider content-position="center">学生信息信息</el-divider>
+        <el-divider content-position="center">学生信息</el-divider>
         <el-row :gutter="10" class="mb8">
           <el-col :span="1.5">
             <el-button type="danger" icon="el-icon-delete" size="mini" @click="handleDeleteTmStu">删除</el-button>
@@ -241,11 +241,11 @@
     <!-- 添加或修改学生任务对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
-        <el-form-item label="学生唯一标识符" prop="stuId">
-          <el-input v-model="form.stuId" placeholder="请输入学生唯一标识符"/>
+        <el-form-item label="学生Id" prop="stuId">
+          <el-input v-model="form.stuId" placeholder="请输入学生Id"/>
         </el-form-item>
-        <el-form-item label="学生ID" prop="stuId">
-          <el-input v-model="form.stuName" placeholder="请输入学生ID"/>
+        <el-form-item label="学生姓名" prop="stuName">
+          <el-input v-model="form.stuName" placeholder="请输入学生姓名"/>
         </el-form-item>
         <el-form-item label="任务名称" prop="wkName">
           <el-input v-model="form.wkName" placeholder="请输入任务名称"/>
