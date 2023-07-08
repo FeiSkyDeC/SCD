@@ -279,7 +279,7 @@
           <el-input v-model="form.wkExStau" placeholder="请输入审核状态"/>
         </el-form-item>
         <el-form-item label="任务下载路径" prop="wkAdd">
-          <file-upload v-model="form.wkAdd" :file-type="['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'pdf']"/>
+          <file-upload v-model="form.wkAdd" :file-type="['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'pdf', 'png', 'jpg']"/>
         </el-form-item>
         <el-form-item label="任务描述" prop="wkDes">
           <el-input v-model="form.wkDes" type="textarea" placeholder="请输入内容"/>
